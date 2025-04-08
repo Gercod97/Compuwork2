@@ -4,6 +4,8 @@
  */
 package compuwork2.Presentacion;
 
+import compuwork2.Administrador;
+import compuwork2.Departamento;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -13,14 +15,20 @@ import javax.swing.JPanel;
  * @author gerob
  */
 public class interfaceCompuwork2 extends javax.swing.JFrame {
-
+    
+    private interfaceCompuwork2 inter2;
+    private Administrador admin;
+    private Departamento departamento;
     /**
      * Creates new form interfaceCompuwork2
      */
-    public interfaceCompuwork2() {
+    public interfaceCompuwork2(Administrador admin) {
+        
+        
+        
+        this.admin=admin;
         initComponents();
         this.setLocationRelativeTo(null);
-        
         try {
         this.setIconImage(new ImageIcon(getClass().getResource("/compuwork2/images/company.png")).getImage());
         }
@@ -46,12 +54,12 @@ public class interfaceCompuwork2 extends javax.swing.JFrame {
         btnAgregarEmpleado = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnModificarEmpleado1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        btnMostrarEmpleado2 = new javax.swing.JPanel();
+        btnMostrarEmpleado = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        btnBuscarEmpleado = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -92,6 +100,8 @@ public class interfaceCompuwork2 extends javax.swing.JFrame {
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setMinimumSize(new java.awt.Dimension(600, 600));
+        jPanel3.setPreferredSize(new java.awt.Dimension(600, 600));
 
         btnAgregarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -134,57 +144,16 @@ public class interfaceCompuwork2 extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        btnModificarEmpleado1.setBackground(new java.awt.Color(255, 255, 255));
-        btnModificarEmpleado1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnMostrarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        btnMostrarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnModificarEmpleado1MouseClicked(evt);
+                btnMostrarEmpleadoMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnModificarEmpleado1MouseEntered(evt);
+                btnMostrarEmpleadoMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnModificarEmpleado1MouseExited(evt);
-            }
-        });
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/compuwork2/images/icons8-update-50.png"))); // NOI18N
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setText("Modificar Empleado");
-
-        javax.swing.GroupLayout btnModificarEmpleado1Layout = new javax.swing.GroupLayout(btnModificarEmpleado1);
-        btnModificarEmpleado1.setLayout(btnModificarEmpleado1Layout);
-        btnModificarEmpleado1Layout.setHorizontalGroup(
-            btnModificarEmpleado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnModificarEmpleado1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(22, 22, 22))
-            .addGroup(btnModificarEmpleado1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        btnModificarEmpleado1Layout.setVerticalGroup(
-            btnModificarEmpleado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnModificarEmpleado1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-
-        btnMostrarEmpleado2.setBackground(new java.awt.Color(255, 255, 255));
-        btnMostrarEmpleado2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMostrarEmpleado2MouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnMostrarEmpleado2MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMostrarEmpleado2MouseExited(evt);
+                btnMostrarEmpleadoMouseExited(evt);
             }
         });
 
@@ -193,22 +162,22 @@ public class interfaceCompuwork2 extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setText("Mostrar Empleado");
 
-        javax.swing.GroupLayout btnMostrarEmpleado2Layout = new javax.swing.GroupLayout(btnMostrarEmpleado2);
-        btnMostrarEmpleado2.setLayout(btnMostrarEmpleado2Layout);
-        btnMostrarEmpleado2Layout.setHorizontalGroup(
-            btnMostrarEmpleado2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnMostrarEmpleado2Layout.createSequentialGroup()
+        javax.swing.GroupLayout btnMostrarEmpleadoLayout = new javax.swing.GroupLayout(btnMostrarEmpleado);
+        btnMostrarEmpleado.setLayout(btnMostrarEmpleadoLayout);
+        btnMostrarEmpleadoLayout.setHorizontalGroup(
+            btnMostrarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnMostrarEmpleadoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(22, 22, 22))
-            .addGroup(btnMostrarEmpleado2Layout.createSequentialGroup()
+            .addGroup(btnMostrarEmpleadoLayout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(jLabel6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        btnMostrarEmpleado2Layout.setVerticalGroup(
-            btnMostrarEmpleado2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnMostrarEmpleado2Layout.createSequentialGroup()
+        btnMostrarEmpleadoLayout.setVerticalGroup(
+            btnMostrarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnMostrarEmpleadoLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -216,28 +185,71 @@ public class interfaceCompuwork2 extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btnBuscarEmpleado.setBackground(new java.awt.Color(255, 255, 255));
+        btnBuscarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarEmpleadoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBuscarEmpleadoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBuscarEmpleadoMouseExited(evt);
+            }
+        });
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/compuwork2/images/icons8-find-user-male-50.png"))); // NOI18N
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Buscar Empleado");
+
+        javax.swing.GroupLayout btnBuscarEmpleadoLayout = new javax.swing.GroupLayout(btnBuscarEmpleado);
+        btnBuscarEmpleado.setLayout(btnBuscarEmpleadoLayout);
+        btnBuscarEmpleadoLayout.setHorizontalGroup(
+            btnBuscarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnBuscarEmpleadoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBuscarEmpleadoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
+        );
+        btnBuscarEmpleadoLayout.setVerticalGroup(
+            btnBuscarEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnBuscarEmpleadoLayout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(61, 61, 61)
                 .addComponent(btnAgregarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addComponent(btnModificarEmpleado1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(btnMostrarEmpleado2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(btnMostrarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(btnBuscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 93, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(60, 60, 60)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnMostrarEmpleado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificarEmpleado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(199, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnBuscarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnMostrarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -245,63 +257,74 @@ public class interfaceCompuwork2 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAgregarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseEntered
+    private void btnBuscarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarEmpleadoMouseExited
         // TODO add your handling code here:
-        this.mouseEntrando(btnAgregarEmpleado);
-        
-    }//GEN-LAST:event_btnAgregarEmpleadoMouseEntered
+        this.mouseSaliendo(btnBuscarEmpleado);
+    }//GEN-LAST:event_btnBuscarEmpleadoMouseExited
 
-    private void btnAgregarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseClicked
+    private void btnBuscarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarEmpleadoMouseEntered
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnAgregarEmpleadoMouseClicked
+        this.mouseEntrando(btnBuscarEmpleado);
+
+    }//GEN-LAST:event_btnBuscarEmpleadoMouseEntered
+
+    private void btnBuscarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarEmpleadoMouseClicked
+
+        // TODO add your handling code here:
+
+        buscarEmpleado buscar = new buscarEmpleado(this,true,inter2,admin);
+        buscar.setVisible(true);
+    }//GEN-LAST:event_btnBuscarEmpleadoMouseClicked
+
+    private void btnMostrarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarEmpleadoMouseExited
+        // TODO add your handling code here:
+        this.mouseSaliendo(btnMostrarEmpleado);
+    }//GEN-LAST:event_btnMostrarEmpleadoMouseExited
+
+    private void btnMostrarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarEmpleadoMouseEntered
+        // TODO add your handling code here:
+        this.mouseEntrando(btnMostrarEmpleado);
+    }//GEN-LAST:event_btnMostrarEmpleadoMouseEntered
+
+    private void btnMostrarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarEmpleadoMouseClicked
+        // TODO add your handling code here:
+
+        mostrarEmpleado mostrar= new mostrarEmpleado(this,true,this,admin);
+        mostrar.setVisible(true);
+
+    }//GEN-LAST:event_btnMostrarEmpleadoMouseClicked
 
     private void btnAgregarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseExited
         // TODO add your handling code here:
         this.mouseSaliendo(btnAgregarEmpleado);
     }//GEN-LAST:event_btnAgregarEmpleadoMouseExited
 
-    private void btnModificarEmpleado1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarEmpleado1MouseClicked
+    private void btnAgregarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnModificarEmpleado1MouseClicked
 
-    private void btnModificarEmpleado1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarEmpleado1MouseEntered
-        // TODO add your handling code here:
-        this.mouseEntrando(btnModificarEmpleado1);
-    }//GEN-LAST:event_btnModificarEmpleado1MouseEntered
+        this.mouseEntrando(btnAgregarEmpleado);
 
-    private void btnModificarEmpleado1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarEmpleado1MouseExited
-        // TODO add your handling code here:
-        this.mouseSaliendo(btnModificarEmpleado1);
-    }//GEN-LAST:event_btnModificarEmpleado1MouseExited
+    }//GEN-LAST:event_btnAgregarEmpleadoMouseEntered
 
-    private void btnMostrarEmpleado2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarEmpleado2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnMostrarEmpleado2MouseClicked
+    private void btnAgregarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseClicked
 
-    private void btnMostrarEmpleado2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarEmpleado2MouseEntered
-        // TODO add your handling code here:
-        this.mouseEntrando(btnMostrarEmpleado2);
-    }//GEN-LAST:event_btnMostrarEmpleado2MouseEntered
+        agregarEmpleado agregar =new agregarEmpleado(this,true,this,admin);
+        agregar.setVisible(true);
 
-    private void btnMostrarEmpleado2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMostrarEmpleado2MouseExited
-        // TODO add your handling code here:
-        this.mouseSaliendo(btnMostrarEmpleado2);
-    }//GEN-LAST:event_btnMostrarEmpleado2MouseExited
+    }//GEN-LAST:event_btnAgregarEmpleadoMouseClicked
 
     private void mouseEntrando (JPanel panel) {
         panel.setBackground(new Color(215,235,255));
@@ -318,15 +341,15 @@ public class interfaceCompuwork2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnAgregarEmpleado;
-    private javax.swing.JPanel btnModificarEmpleado1;
-    private javax.swing.JPanel btnMostrarEmpleado2;
+    private javax.swing.JPanel btnBuscarEmpleado;
+    private javax.swing.JPanel btnMostrarEmpleado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

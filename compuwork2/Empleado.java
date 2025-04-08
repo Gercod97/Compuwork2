@@ -31,17 +31,27 @@ public class Empleado {
     public Empleado (String nombre, long id, int salario, String departamento)
     {
         this.nombre=nombre;
-        this.id=id;
+        this.id=contadorEmpleados;
         this.salario=salario;
         this.departamento=departamento;
+        contadorEmpleados++;
     }
     
     public Empleado (){
         
     }
     
-       
-
+    public Empleado (String nombre, String departamento, int salario) {
+    
+    this.nombre=nombre;
+    this.departamento=departamento;
+    this.salario=salario;
+    this.id=contadorEmpleados;
+    contadorEmpleados++;
+        
+        
+    }
+    
     public String getNombre() {
         return nombre;
     }

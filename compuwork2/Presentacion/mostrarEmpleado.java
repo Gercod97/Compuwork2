@@ -4,20 +4,36 @@
  */
 package compuwork2.Presentacion;
 
+import compuwork2.Administrador;
+import compuwork2.Empleado;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 
 /**
  *
  * @author gerob
  */
 public class mostrarEmpleado extends javax.swing.JDialog {
-
+     private interfaceCompuwork2 principal;
+     private Administrador admin;
+     private ArrayList<Empleado> listaEmpleados;
+     
     /**
      * Creates new form mostrarEmpleado
      */
-    public mostrarEmpleado(java.awt.Frame parent, boolean modal) {
+    public mostrarEmpleado(java.awt.Frame parent, boolean modal, interfaceCompuwork2 principal, Administrador admin) {
         super(parent, modal);
+        this.principal=principal;
+        this.admin=admin;
+        
+        this.listaEmpleados=admin.getListaEmpleados();
+        
         initComponents();
+        this.llenarTabla();
         this.setLocationRelativeTo(null);
                 try {
         this.setIconImage(new ImageIcon(getClass().getResource("/compuwork2/images/company.png")).getImage());
@@ -26,7 +42,24 @@ public class mostrarEmpleado extends javax.swing.JDialog {
         
             System.out.println("Error en tiempo de ejecución ");
         }
+                
+      
     }
+    
+      public void llenarTabla (){
+          
+          DefaultTableModel modelTabla= new DefaultTableModel(new String[] {"Id","Nombre","Departamento","Salario"},this.listaEmpleados.size());
+          this.tblEmpleados.setModel(modelTabla);
+          TableModel datosModel=tblEmpleados.getModel();
+          for (int i = 0; i < listaEmpleados.size(); i++) {
+              Empleado emp=this.listaEmpleados.get(i);
+              datosModel.setValueAt(emp.getId(),i,0);
+              datosModel.setValueAt(emp.getNombre(),i,1);
+              datosModel.setValueAt(emp.getDepartamento(),i,2);
+              datosModel.setValueAt(emp.getSalario(),i,3);
+          }
+
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,21 +70,195 @@ public class mostrarEmpleado extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        btnEliminarEmpleado = new javax.swing.JButton();
+        btnActualizarEmpleado = new javax.swing.JButton();
+        btnVolverMenuInicial = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblEmpleados = new javax.swing.JTable();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(100, 190, 255));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Mostrar empleados");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(127, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(125, 125, 125))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnEliminarEmpleado.setText("Eliminar");
+        btnEliminarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarEmpleadoMouseClicked(evt);
+            }
+        });
+        btnEliminarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarEmpleadoActionPerformed(evt);
+            }
+        });
+
+        btnActualizarEmpleado.setText("Actualizar");
+        btnActualizarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarEmpleadoActionPerformed(evt);
+            }
+        });
+
+        btnVolverMenuInicial.setText("Volver");
+        btnVolverMenuInicial.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVolverMenuInicialMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnVolverMenuInicialMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVolverMenuInicialMouseExited(evt);
+            }
+        });
+
+        tblEmpleados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Id", "Nombre", "Departamento", "Salario"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tblEmpleados.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tblEmpleados);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnActualizarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVolverMenuInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEliminarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(49, 49, 49))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(btnEliminarEmpleado)
+                        .addGap(45, 45, 45)
+                        .addComponent(btnActualizarEmpleado)
+                        .addGap(50, 50, 50)
+                        .addComponent(btnVolverMenuInicial))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarEmpleadoActionPerformed
+        // TODO add your handling code here:
+        
+        int fila = this.tblEmpleados.getSelectedRow();
+        if (fila>=0) {
+            Empleado emp=this.listaEmpleados.get(fila);
+            int opcionEliminar = JOptionPane.showConfirmDialog(this,"Está seguro de eliminar a " +emp.getNombre());
+            if (opcionEliminar==0){
+            this.admin.eliminarEmpleado(emp.getId());
+            this.listaEmpleados=this.admin.getListaEmpleados();
+            this.llenarTabla();
+            }    
+            
+        } else {
+            JOptionPane.showMessageDialog(this,"No ha seleccionado un empleado a eliminar");
+        }
+    }//GEN-LAST:event_btnEliminarEmpleadoActionPerformed
+
+    private void btnVolverMenuInicialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMenuInicialMouseClicked
+        // TODO add your handling code here:
+        
+        this.dispose();
+    }//GEN-LAST:event_btnVolverMenuInicialMouseClicked
+
+    private void btnVolverMenuInicialMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMenuInicialMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVolverMenuInicialMouseEntered
+
+    private void btnVolverMenuInicialMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMenuInicialMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVolverMenuInicialMouseExited
+
+    private void btnEliminarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarEmpleadoMouseClicked
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_btnEliminarEmpleadoMouseClicked
+
+    private void btnActualizarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarEmpleadoActionPerformed
+        // TODO add your handling code here:
+        int fila=this.tblEmpleados.getSelectedRow(); 
+        if (fila<=0) {
+            Empleado emp=this.listaEmpleados.get(fila);
+            modificarEmpleado ventanaModificar= new modificarEmpleado(this.principal,true,admin,emp,this);
+            ventanaModificar.setVisible(true);
+            
+        }
+        
+    }//GEN-LAST:event_btnActualizarEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -59,5 +266,13 @@ public class mostrarEmpleado extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizarEmpleado;
+    private javax.swing.JButton btnEliminarEmpleado;
+    private javax.swing.JButton btnVolverMenuInicial;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblEmpleados;
     // End of variables declaration//GEN-END:variables
 }

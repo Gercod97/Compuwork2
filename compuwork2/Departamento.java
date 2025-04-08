@@ -4,28 +4,33 @@
  */
 package compuwork2;
 
+import java.util.ArrayList;
+
 public class Departamento {
     private long id;
     private String nombreDepartamento;
-    private String[] listaEmpleados;
-    private Administrador admin = new Administrador();
+    private ArrayList<Empleado> listaEmpleados;
+    private Administrador admin;
 
-    public Departamento(String nombreDepartamento, String[] listaEmpleados) {
+    public Departamento(String nombreDepartamento, ArrayList<Empleado> listaEmpleados) {
+        this.admin = new Administrador ("Geronimo","Gero101028");
         if (nombreDepartamento == null || listaEmpleados == null) {
             throw new IllegalArgumentException("El nombre del departamento y la lista de empleados no pueden ser nulos.");
         }
         this.nombreDepartamento = nombreDepartamento;
-        this.listaEmpleados = listaEmpleados;
+        this.listaEmpleados = new ArrayList<>();
     }
 
     public Departamento(String nombreDepartamento) {
+        this.admin = new Administrador ("Geronimo","Gero101028");
         if (nombreDepartamento == null) {
             throw new IllegalArgumentException("El nombre del departamento no puede ser nulo.");
         }
         this.nombreDepartamento = nombreDepartamento;
     }
 
-    public Departamento() {}
+    public Departamento() {this.admin = new Administrador ("Geronimo","Gero101028");
+}
 
     public long getId() {
         return id;
@@ -46,11 +51,14 @@ public class Departamento {
         this.nombreDepartamento = nombreDepartamento;
     }
 
-    public String[] getListaEmpleados() {
-        return listaEmpleados;
+    public ArrayList<Empleado> getListaEmpleados() {
+        if (this.listaEmpleados==null) {
+            this.listaEmpleados= new ArrayList<>();
+        }
+        return this.listaEmpleados;
     }
 
-    public void setListaEmpleados(String[] listaEmpleados) {
+    public void setListaEmpleados(ArrayList<Empleado> listaEmpleados) {
         if (listaEmpleados == null) {
             throw new IllegalArgumentException("La lista de empleados no puede ser nula.");
         }
@@ -66,12 +74,13 @@ public class Departamento {
     }
 
     public boolean iniciarSesion(String user, String password) {
-        try {
-            return admin.getUser() != null && admin.getUser().equals(user) && 
-                   admin.getPassword() != null && admin.getPassword().equals(password);
-        } catch (Exception e) {
-            System.out.println("Error al iniciar sesión: " + e.getMessage());
-            return false;
-        }
+        
+        return (this.admin.getUser().equals(user) && this.admin.getPassword().equals(password));
+
     }
-}
+    
+
+    }
+
+
+    

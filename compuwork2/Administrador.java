@@ -8,16 +8,35 @@ import java.util.*;
 public class Administrador extends Empleado {
     private String user;
     private String password;
-    private final ArrayList<Empleado> listaEmpleados = new ArrayList<>();
-    private final ArrayList<Departamento> listaDepartamentos = new ArrayList<>();
+    private ArrayList<Empleado> listaEmpleados;
+
+    public void setListaEmpleados(ArrayList<Empleado> listaEmpleados) {
+        this.listaEmpleados = listaEmpleados;
+    }
+
+    public void setListaDepartamentos(ArrayList<Departamento> listaDepartamentos) {
+        this.listaDepartamentos = listaDepartamentos;
+    }
+
+    public ArrayList<Empleado> getListaEmpleados() {
+        return listaEmpleados;
+    }
+
+    public ArrayList<Departamento> getListaDepartamentos() {
+        return listaDepartamentos;
+    }
+    private ArrayList<Departamento> listaDepartamentos;
 
     public Administrador(String nombre, long id, int salario, String departamento, String user, String password) {
         super(nombre, id, salario, departamento);
         this.user = user;
         this.password = password;
+        this.listaEmpleados= new ArrayList<>();
     }
 
-    public Administrador() {}
+    public Administrador() {
+        this.listaEmpleados= new ArrayList<>();
+    }
 
     public Administrador(String user, String password) {
         this.user = user;
@@ -40,18 +59,27 @@ public class Administrador extends Empleado {
         return password;
     }
 
-    public void agregarEmpleado(Empleado empleado) {
-        if (empleado == null) {
-            throw new IllegalArgumentException("El empleado no puede ser nulo");
-        }
-        listaEmpleados.add(empleado);
+    public Empleado buscarEmpleado (String nombre) {
+        for (int i = 0; i < listaEmpleados.size(); i++) {
+            
+            Empleado emp=this.listaEmpleados.get(i);
+            if(emp.getNombre().equals(nombre)){
+                return emp;
+            }
+            
+        } return null;
+        
+    }
+    
+    
+    public boolean agregarEmpleado(Empleado empleado) {
+
+       return listaEmpleados.add(empleado);
     }
 
-    public void agregarDepartamento(Departamento departamento) {
-        if (departamento == null) {
-            throw new IllegalArgumentException("El departamento no puede ser nulo");
-        }
-        listaDepartamentos.add(departamento);
+    public boolean agregarDepartamento(Departamento departamento) {
+       
+       return listaDepartamentos.add(departamento);
     }
 
     public Empleado mostrarEmpleados(long id) {

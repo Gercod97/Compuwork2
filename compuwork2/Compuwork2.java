@@ -17,18 +17,14 @@ public class Compuwork2 {
      */
     public static void main(String[] args) {
         
-        Departamento departamento = new Departamento ();
-        
-        Administrador admin = new Administrador ("Geronimo","Gero101028");
-        
-             
-        interfaceCompuwork2 present = new interfaceCompuwork2();
-        
-        iniciarSesion ini=new iniciarSesion(present,true);
-        
-        
-        
+
+           
+        Administrador admin=new Administrador();   
+        interfaceCompuwork2 principal = new interfaceCompuwork2(admin);
+        Departamento departamento = new Departamento();
+        iniciarSesion ini=new iniciarSesion(null, true, principal,admin,departamento);
         ini.setVisible(true);
+        principal.setVisible(true);
         
         
  

@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
@@ -6,22 +6,37 @@ package compuwork2.Presentacion;
 
 import javax.swing.ImageIcon;
 
+import javax.swing.JOptionPane;
+
 import compuwork2.Departamento;
 
-import compuwork2.Presentacion.interfaceCompuwork2;
+
+
+import compuwork2.Administrador;
+
+
+ 
 /**
  *
  * @author gerob
  */
 public class iniciarSesion extends javax.swing.JDialog {
-
-    Departamento departamento = new Departamento();
-    interfaceCompuwork2 inter2 = new interfaceCompuwork2();
-    /**
+    
+    
+    private Administrador admin;
+    private interfaceCompuwork2 principal;
+    private Departamento departamento;
+   
+    
+     /**
      * Creates new form iniciarSesion
+
      */
-    public iniciarSesion(java.awt.Frame parent, boolean modal) {
+    public iniciarSesion(java.awt.Frame parent, boolean modal, interfaceCompuwork2 principal, Administrador admin, Departamento departamento) {
         super(parent, modal);
+        this.principal=principal;
+        this.admin=admin;
+        this.departamento=departamento;
         initComponents();
         this.setLocationRelativeTo(null);
                 try {
@@ -31,7 +46,13 @@ public class iniciarSesion extends javax.swing.JDialog {
         
             System.out.println("Error en tiempo de ejecución ");
         }
+             
+
+         
+                
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -169,8 +190,10 @@ public class iniciarSesion extends javax.swing.JDialog {
         String user = this.txtUser.getText();
         String password =  this.txtPassword.getText();
         if (this.departamento.iniciarSesion(user, password)){
-            this.inter2.setVisible(true);
+            this.principal.setVisible(true);
             this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuario o contraseña no coinciden", "Error al iniciar sesión", JOptionPane.PLAIN_MESSAGE);
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 

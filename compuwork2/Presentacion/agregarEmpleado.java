@@ -4,20 +4,28 @@
  */
 package compuwork2.Presentacion;
 
+import compuwork2.Empleado;
 import javax.swing.ImageIcon;
+import compuwork2.Administrador;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author gerob
  */
 public class agregarEmpleado extends javax.swing.JDialog {
+    
+    private interfaceCompuwork2 principal;
+    private Administrador admin;
 
     /**
      * Creates new form agregarEmpleado
      */
-    public agregarEmpleado(java.awt.Frame parent, boolean modal) {
+    public agregarEmpleado(java.awt.Frame parent, boolean modal, interfaceCompuwork2 principal, Administrador admin) {
         super(parent, modal);
         initComponents();
+        this.principal=principal;
+        this.admin=admin;
         this.setLocationRelativeTo(null);
                 try {
         this.setIconImage(new ImageIcon(getClass().getResource("/compuwork2/images/company.png")).getImage());
@@ -26,6 +34,8 @@ public class agregarEmpleado extends javax.swing.JDialog {
         
             System.out.println("Error en tiempo de ejecución ");
         }
+                
+
     }
 
     /**
@@ -37,21 +47,196 @@ public class agregarEmpleado extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lblNombreEmpleado = new javax.swing.JLabel();
+        lblDepartamento = new javax.swing.JLabel();
+        txtNombreEmpleado = new javax.swing.JTextField();
+        txtDepartamento = new javax.swing.JTextField();
+        btnAgregarEmpleado = new javax.swing.JButton();
+        btnVolverMenuInicial = new javax.swing.JButton();
+        lblSalario = new javax.swing.JLabel();
+        txtSalario = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(100, 190, 255));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Agregar empleado");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(154, 154, 154)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(193, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblNombreEmpleado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblNombreEmpleado.setText("Nombre empleado");
+
+        lblDepartamento.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblDepartamento.setText("Departamento");
+
+        txtNombreEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreEmpleadoActionPerformed(evt);
+            }
+        });
+
+        btnAgregarEmpleado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAgregarEmpleado.setText("Agregar");
+        btnAgregarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnAgregarEmpleadoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgregarEmpleadoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarEmpleadoMouseExited(evt);
+            }
+        });
+        btnAgregarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarEmpleadoActionPerformed(evt);
+            }
+        });
+
+        btnVolverMenuInicial.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnVolverMenuInicial.setText("Volver");
+        btnVolverMenuInicial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverMenuInicialActionPerformed(evt);
+            }
+        });
+
+        lblSalario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblSalario.setText("Salario");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(147, 147, 147)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnAgregarEmpleado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVolverMenuInicial))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(lblSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNombreEmpleado)
+                    .addComponent(txtNombreEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDepartamento)
+                    .addComponent(txtDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAgregarEmpleado)
+                    .addComponent(btnVolverMenuInicial))
+                .addGap(53, 53, 53))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNombreEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreEmpleadoActionPerformed
+
+    private void btnAgregarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoActionPerformed
+        
+        String nombre  =this.txtNombreEmpleado.getText();
+        String departamento = this.txtDepartamento.getText();
+        
+        
+            
+        int salario =Integer.parseInt(this.txtSalario.getText());
+        
+      
+        
+        Empleado empleado = new Empleado(nombre,departamento,salario);
+        if(this.admin.agregarEmpleado(empleado)){
+            JOptionPane.showMessageDialog(this,"Empleado añadido exitosamente");
+            this.dispose();
+        }else {
+            JOptionPane.showMessageDialog(this,"No se ha podido adicionar, ha ocurrido un error");
+        }
+
+        
+
+        
+    }//GEN-LAST:event_btnAgregarEmpleadoActionPerformed
+
+    private void btnVolverMenuInicialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverMenuInicialActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnVolverMenuInicialActionPerformed
+
+    private void btnAgregarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarEmpleadoMouseClicked
+
+    private void btnAgregarEmpleadoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarEmpleadoMouseEntered
+
+    private void btnAgregarEmpleadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarEmpleadoMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarEmpleadoMouseExited
 
     /**
      * @param args the command line arguments
@@ -59,5 +244,16 @@ public class agregarEmpleado extends javax.swing.JDialog {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarEmpleado;
+    private javax.swing.JButton btnVolverMenuInicial;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblDepartamento;
+    private javax.swing.JLabel lblNombreEmpleado;
+    private javax.swing.JLabel lblSalario;
+    private javax.swing.JTextField txtDepartamento;
+    private javax.swing.JTextField txtNombreEmpleado;
+    private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
 }
